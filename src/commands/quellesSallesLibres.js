@@ -1,5 +1,16 @@
-let quellesSallesLibres = (creneaux, creneau) => {
+let quellesSallesLibres = (creneaux, creneau, logger) => {
     // creneau est au format ME_10:00-12:00 ou J_10:00-12:00, on cherche les salles libres pour ce créneau
+
+    // Vérifier que les créeneaux existent (pas après 23h59)
+    let hr = creneau.split("_")[1].split("-");
+    let deb = hr[0];
+    let fn = hr[1];
+    let debutNum = parseInt(deb.replace(":", ""), 10);
+    let finNum = parseInt(fn.replace(":", ""), 10);
+    if (debutNum > 2359 || finNum > 2359){
+        logger.info("The creneau starts after midnight !".red);
+        return new Set("@");
+    }
 
     let creneauSplit = creneau.split("_");
     let jour = creneauSplit[0];

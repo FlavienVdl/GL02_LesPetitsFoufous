@@ -115,12 +115,17 @@ cli
             return
         }
 
-        let listeSalles = Array.from(quellesSallesLibres(parser.parsedCreneaux, args.creneau)).join(", ");
-
-        if (listeSalles === "") {
+        let listeSalles = Array.from(quellesSallesLibres(parser.parsedCreneaux, args.creneau, logger)).join(", ");
+        // Not existing creneau case
+        if (listeSalles === "@") {
+            return;
+        }
+        else if (listeSalles === "") {
             listeSalles = "No room available";
         }
-        console.log(listeSalles);
+        else {
+            console.log(listeSalles);
+        }
 
     })
 
