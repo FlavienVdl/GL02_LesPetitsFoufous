@@ -42,7 +42,7 @@ cli
             return
         }
 
-        let listeSalles = findSalles(parser.parsedCreneaux, args.cours);
+        let listeSalles = findSalles(parser.parsedCreneaux, args.cours, logger);
         console.log(Array.from(listeSalles).join(", "));
     })
 
