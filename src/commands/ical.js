@@ -91,10 +91,14 @@ const ical = (parser, usager, date_debut, date_fin) => {
     }
 
     function choixCours() {
-        rl.question("Quel cours as-tu ?\n", resp => {
+        rl.question("Quel cours as-tu ? ( exit pour arrêter la sélection )\n", resp => {
             if (resp === "exit") {
-                rl.close();
-                generateFile();
+                rl.question("Souhaitez vous générer le icalendar (Yes/No)\n",resp =>{
+                    if(resp === "Yes"){
+                        generateFile();
+                    }
+                    rl.close();
+                })
                 return;
             }
 
