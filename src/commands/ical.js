@@ -93,12 +93,14 @@ const ical = (parser, usager, date_debut, date_fin) => {
     function choixCours() {
         rl.question("Quel cours as-tu ? ( exit pour arrêter la sélection )\n", resp => {
             if (resp === "exit") {
-                rl.question("Souhaitez vous générer le icalendar (Yes/No)\n",resp =>{
-                    if(resp === "Yes"){
+                rl.question("Souhaitez-vous générer le fichier iCalendar ? (Oui/Non)\n", resp => {
+                    if (resp.toLowerCase() === "oui" || resp.toLowerCase() === "yes") {
                         generateFile();
+                    } else {
+                        console.log("Création du calendrier annulée. Les choix sont oubliés.");
                     }
                     rl.close();
-                })
+                });
                 return;
             }
 
