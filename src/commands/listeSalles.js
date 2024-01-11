@@ -33,7 +33,9 @@ let listeSalles = () => {
     // on ecrit la liste des salles dans le fichier de sortie
     fs.writeFileSync(fichierSortie, salles.join('\n'), 'utf-8');
 
-    console.log(`La liste des salles a été générée dans le fichier ${fichierSortie}`);
+    // console.log(`La liste des salles a été générée dans le fichier ${fichierSortie}`);
+
+    return salles;
 }
 
 // on utilise une fonction récursive pour lire tous les fichiers .cru des sous-répertoires

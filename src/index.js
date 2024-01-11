@@ -62,8 +62,17 @@ cli
             return
         }
 
-        let capacite = capaciteMax(parser.parsedCreneaux, args.salle);
-        console.log(capacite);
+        // generer la liste de toutes les salles existantes avec la fonction dediee
+        maListeSalles = listeSalles();
+        // verifier que la salle passee en parametre est bien comprise dans ce fichier
+        if(!maListeSalles.includes(args.salle)) {
+            logger.error("The specified room does not exist.".red);
+        }
+        else{
+            let capacite = capaciteMax(parser.parsedCreneaux, args.salle);
+            console.log(capacite);
+        }
+        
     })
 
     // SPEC3
@@ -102,6 +111,7 @@ cli
     .action(({args, options, logger}) => {
         // on appelle la fonction principale
         listeSalles();
+        console.log(`La liste des salles a été générée dans le fichier ${fichierSortie}`);
     })
 
     //SPEC5
