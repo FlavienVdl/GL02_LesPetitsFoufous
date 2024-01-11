@@ -3,7 +3,6 @@ const colors = require("colors");
 const cli = require("@caporal/core").default;
 
 const CreneauParser = require("./utils/CreneauParser");
-const SalleParser = require("./utils/SalleParser");
 
 const findSalles = require("./commands/findSalles");
 const capaciteMax = require("./commands/capaciteMax");
