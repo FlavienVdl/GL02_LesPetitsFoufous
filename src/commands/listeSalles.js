@@ -29,7 +29,6 @@ let listeSalles = () => {
     // salles = [...new Set(salles)];
     salles = Array.from(new Set(salles.map(salle => salle.substring(0, 4))));
 
-
     // on ecrit la liste des salles dans le fichier de sortie
     fs.writeFileSync(fichierSortie, salles.join('\n'), 'utf-8');
 
