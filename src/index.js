@@ -3,6 +3,7 @@ const colors = require("colors");
 const cli = require("@caporal/core").default;
 
 const CreneauParser = require("./utils/CreneauParser");
+const SalleParser = require("./utils/SalleParser");
 
 const findSalles = require("./commands/findSalles");
 const capaciteMax = require("./commands/capaciteMax");
@@ -10,6 +11,8 @@ const quandLibreSalle = require("./commands/quandLibreSalle");
 const quellesSallesLibres = require("./commands/quellesSallesLibres");
 const ical = require("./commands/ical");
 const visuVegalite = require("./commands/visuVegalite");
+const listeSalles = require("./commands/listeSalles");
+
 
 cli
     .version('lespetitsfoufous-sujet-a')
@@ -93,6 +96,13 @@ cli
 
         let listeCreneaux = quandLibreSalle(parser.parsedCreneaux, args.salle);
         console.log(Array.from(listeCreneaux).join(", "));
+    })
+
+    //SPEC4
+    .command('liste-salles', "Creer un fichier .txt de la liste des salles existantes")
+    .action(({args, options, logger}) => {
+        // on appelle la fonction principale
+        listeSalles();
     })
 
     //SPEC5
