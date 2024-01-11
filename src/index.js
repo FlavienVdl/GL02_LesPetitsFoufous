@@ -62,6 +62,9 @@ cli
             return
         }
 
+        // par defaut, lorsque la salle saisie n'existe pas, la capacite max de cette deniere est fixee a -1
+        // ajout d'un message d'erreur au cas ou la salle saisie n'existe pas pour ameliorer la coherence de la commande
+
         // generer la liste de toutes les salles existantes avec la fonction dediee
         maListeSalles = listeSalles();
         // verifier que la salle passee en parametre est bien comprise dans ce fichier
@@ -102,8 +105,20 @@ cli
             return
         }
 
-        let listeCreneaux = quandLibreSalle(parser.parsedCreneaux, args.salle);
-        console.log(Array.from(listeCreneaux).join(", "));
+        // par defaut, lorsque la salle saisie n'existe pas, elle est consideree libre du lundi au samedi de 8h a 20h
+        // ajout d'un message d'erreur au cas ou la salle saisie n'existe pas pour ameliorer la coherence de la commande
+
+        // generer la liste de toutes les salles existantes avec la fonction dediee
+        maListeSalles = listeSalles();
+        // verifier que la salle passee en parametre est bien comprise dans ce fichier
+        if(!maListeSalles.includes(args.salle)) {
+            logger.error("The specified room does not exist.".red);
+        }
+        else{
+            let listeCreneaux = quandLibreSalle(parser.parsedCreneaux, args.salle);
+            console.log(Array.from(listeCreneaux).join(", "));
+        }
+
     })
 
     //SPEC4
@@ -207,6 +222,5 @@ cli
         let capacite = visuVegalite(parser.parsedCreneaux, args.ordre);
         //console.log(capacite);
     })
-
 
 cli.run(process.argv.slice(2));
