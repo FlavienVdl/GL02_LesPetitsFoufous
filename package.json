@@ -13,6 +13,7 @@
         "@caporal/core": "^2.0.7",
         "canvas": "^2.11.2",
         "colors": "^1.4.0",
+        "node.js": "^0.0.1-security",
         "vega": "^5.26.1",
         "vega-lite": "^5.16.3"
     },

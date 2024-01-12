@@ -86,6 +86,14 @@ Arguments :
 - `<chemin>` Chemin du fichier ou du dossier contenant les créneaux
 - `<ordre>` Ordre croissant (c) ou décroissant (d)
 
+### Fonctionnalité n°8
+Liste de toutes les salles existantes générée en fichier .txt à partir des fichiers .cru
+```bash
+node . listeSalles
+```
+Arguments :
+néant
+
 ## Test
 
 Pour tester l'outil, des jeu de données sont disponible dans le dossier `exemple_data`.
