@@ -27,6 +27,16 @@ let quandLibreSalle = (creneaux, salle) => {
     // on trie les disponibilités
     triDispos(disponibilites);
 
+    // On élimine les disponibilitées du style "V 20h00-20h00"
+    let disponibilitesFiltrees = [];
+    disponibilites.forEach(heure => {
+        const plageHoraire = heure.split(' ')[1].split('-');
+        if (plageHoraire[0] !== plageHoraire[1]) {
+            disponibilitesFiltrees.push(heure);
+        }
+    });
+    disponibilites = disponibilitesFiltrees;
+
     // on renvoie les disponibilités
     let creneauxLibres = new Set(disponibilites);
 
